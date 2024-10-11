@@ -5,33 +5,29 @@ using namespace std;
 typedef struct Node {
     int data;
     Node* next;
-} Node;
-
+}Node;
 
 Node* createNode(int data) {
     Node* newNode = (Node*) malloc(sizeof(Node));
 
-    newNode->data = data;
-    newNode->next = nullptr;
+    newNode -> data = data;
+    newNode-> next = nullptr;
 
     return newNode;
 }
 
-int getLength(Node* head) {
-    Node* temp = head;
+Node* findMiddleNode(Node* head) {
 
-    int length = 0;
-    while(temp) {
-        length++;
-        temp = temp->next;
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast -> next -> next;
     }
 
-    return length;
+    return slow;
 
-}
-
-int getMiddleIndex(int length) {
-    return length / 2;
 }
 
 int main() {
@@ -39,23 +35,13 @@ int main() {
     Node* head = createNode(10);
     head -> next = createNode(20);
     head -> next -> next = createNode(30);
-    head -> next -> next -> next  = createNode(40);
+    head -> next -> next -> next = createNode(40);
     head -> next -> next -> next -> next = createNode(50);
     head -> next -> next -> next -> next -> next= createNode(60);
 
-    int length = getLength(head);
+    Node* middleNode = findMiddleNode(head);
 
-    int middleIndex = getMiddleIndex(length);
-
-    Node* temp = head;
-    int currentIndex = 0;
-
-    while(currentIndex != middleIndex) {
-        temp = temp -> next;
-        currentIndex++;
-    }
-
-    cout << "Middle Element: " << temp->data << endl;
+    cout << "Middle Node is: " << middleNode->data << endl;
 
     free(head);
 
