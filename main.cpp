@@ -2,71 +2,38 @@
 
 using namespace std;
 
-typedef struct{
-    int age;
-    double grade;
-} Student;
+typedef struct Node{
+    int data;
+    Node* next;
+} Node;
 
-int main(){
+int main() {
 
-    Student* students = nullptr;
-    int currentSize = 0;
+    Node* first = (Node*) malloc(sizeof(Node));
+    first -> data = 10;
 
-    while(true) {
+    Node* second = (Node*) malloc(sizeof(Node));
+    second -> data = 20;
 
-        cout << "Please enter an age for " << currentSize + 1 << ". student (-1 to exit): " << endl;
+    Node* third = (Node*) malloc(sizeof(Node));
+    third -> data = 30;
 
-        int age = 0;
+    first -> next = second;
+    second -> next  = third;
+    third -> next = nullptr;
 
-        while (true) {
-            cin >> age;
+    cout << "Linked List: " <<endl;
 
-            if(cin.fail()) {
-                cin.clear();
-                cin.ignore();
-                cout << "Omgggg! Please enter an age (int) for " << currentSize + 1 << ". student (-1 to exit): " << endl;
-            } else {
-                break;
-            }
-        }
+    Node* current = first;
 
-        if(age == -1) break;
-
-        double grade = 0;
-        cout << "Please enter a grade for " << currentSize + 1 << ". student" << endl;
-
-        while(true) {
-            cin >> grade;
-
-            if(cin.fail()) {
-                cin.clear();
-                cin.ignore();
-                cout << "Broooo! Please enter a grade for " << currentSize + 1 << ". student" << endl;
-            } else {
-                break;
-            }
-        }
-
-        Student* temp = (Student*)realloc(students, sizeof(Student) * (currentSize + 1));
-
-        if(temp == nullptr) {
-            cout << "Memory allocation error" << endl;
-            return -1;
-        }
-
-        students = temp;
-
-        students[currentSize].age = age;
-        students[currentSize].grade = grade;
-
-        currentSize++;
+    for(int i=0; i< 3; i++) {
+        cout << current->data<<endl;
+        current = current->next;
     }
 
-    for(int i=0; i< currentSize && students != nullptr; i++) {
-        cout << "Age: " << students[i].age << " Grade: " << students[i].grade << endl;
-    }
-
-    free(students);
+    free(first);
+    free(second);
+    free(third);
 
     return 0;
 }
