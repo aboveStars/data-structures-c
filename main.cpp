@@ -17,16 +17,14 @@ Node* createNode(int data) {
 }
 
 int getNumberOfOccurrences(Node*head, int number) {
-    Node* current = head;
 
-    int occurrences = 0;
+    if(head == nullptr) return 0;
 
-    while(current) {
-        if(current->data == number) occurrences++;
-        current = current->next;
-    }
+    int valueFromNext = getNumberOfOccurrences(head->next, number);
 
-    return occurrences;
+    if(head->data == number) valueFromNext++;
+
+    return valueFromNext;
 }
 
 int main() {
