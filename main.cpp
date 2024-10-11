@@ -7,33 +7,31 @@ typedef struct Node{
     Node* next;
 } Node;
 
+Node* createNode(int data) {
+    Node* newNode = (Node*) malloc(sizeof(Node));
+
+    newNode->data = data;
+    newNode->next = nullptr;
+
+    return newNode;
+}
+
 int main() {
 
-    Node* first = (Node*) malloc(sizeof(Node));
-    first -> data = 10;
-
-    Node* second = (Node*) malloc(sizeof(Node));
-    second -> data = 20;
-
-    Node* third = (Node*) malloc(sizeof(Node));
-    third -> data = 30;
-
-    first -> next = second;
-    second -> next  = third;
-    third -> next = nullptr;
+    Node* head = createNode(10);
+    head->next = createNode(20);
+    head->next->next = createNode(30);
 
     cout << "Linked List: " <<endl;
 
-    Node* current = first;
+    Node* current = head;
 
     for(int i=0; i< 3; i++) {
         cout << current->data<<endl;
         current = current->next;
     }
 
-    free(first);
-    free(second);
-    free(third);
+    free(head);
 
     return 0;
 }
