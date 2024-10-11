@@ -5,45 +5,61 @@ using namespace std;
 typedef struct Node {
     int data;
     Node* next;
-}Node;
+} Node;
 
 Node* createNode(int data) {
     Node* newNode = (Node*) malloc(sizeof(Node));
 
-    newNode -> data = data;
-    newNode-> next = nullptr;
+    newNode->data = data;
+    newNode->next = nullptr;
 
     return newNode;
 }
 
-Node* findMiddleNode(Node* head) {
+int getNumberOfOccurrences(Node*head, int number) {
+    Node* current = head;
 
-    Node* slow = head;
-    Node* fast = head;
+    int occurrences = 0;
 
-    while (fast && fast->next != nullptr) {
-        slow = slow->next;
-        fast = fast -> next -> next;
+    while(current) {
+        if(current->data == number) occurrences++;
+        current = current->next;
     }
 
-    return slow;
-
+    return occurrences;
 }
 
 int main() {
 
-    Node* head = createNode(10);
-    head -> next = createNode(20);
-    head -> next -> next = createNode(30);
-    head -> next -> next -> next = createNode(40);
-    head -> next -> next -> next -> next = createNode(50);
-    head -> next -> next -> next -> next -> next= createNode(60);
+    // 1-2-1-2-1-3-1
+    Node* head = createNode(1);
+    head->next = createNode(2);
+    head->next->next = createNode(1);
+    head->next->next->next= createNode(2);
+    head->next->next->next->next= createNode(1);
+    head->next->next->next->next->next=createNode(3);
+    head->next->next->next->next->next->next=createNode(1);
 
-    Node* middleNode = findMiddleNode(head);
+    cout << "What number do you want to check? " << endl;
 
-    cout << "Middle Node is: " << middleNode->data << endl;
+    int key = 0;
+    cin >> key;
+
+    if(cin.fail()) {
+        cin.clear();
+        cin.ignore();
+
+        cout << "Invalid input!" << endl;
+
+        free(head);
+        return -1;
+    }
+
+    int count = getNumberOfOccurrences(head, key);
+
+    cout << "There are " << count << " occurrences of the " << key << "." << endl;
+
 
     free(head);
-
     return 0;
 }
