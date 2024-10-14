@@ -18,15 +18,22 @@ Node* createNode(int data) {
 }
 
 int isCircular(Node* head) {
-    if(head == nullptr) return -1;
 
-    Node* current = head;
-    while(current) {
-        if(current->next == head) return 1;
-        current = current->next;
+    Node* slow = head;
+    Node* fast = head;
+
+    while(slow && slow->next && fast && fast->next) {
+
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if(slow == fast) {
+            return 1;
+        }
+
     }
 
-   return 0;
+    return 0;
 
 }
 
