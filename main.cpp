@@ -7,58 +7,26 @@ typedef struct Node {
     Node* next;
 }Node;
 
-Node* createNode(int data) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-
-    newNode->data = data;
-    newNode->next = nullptr;
-
-    return newNode;
-
-}
-
-int isCircular(Node* head) {
-
-    Node* slow = head;
-    Node* fast = head;
-
-    while(slow && slow->next && fast && fast->next) {
-
-        slow = slow->next;
-        fast = fast->next->next;
-
-        if(slow == fast) {
-            return 1;
-        }
-
-    }
-
-    return 0;
-
+void init_node(Node& n, int the_data,  Node* the_next) {
+    n.data = the_data;
+    n.next = the_next;
 }
 
 int main() {
+    Node a;
+    Node b;
+    Node c;
 
-    Node* head = createNode(2);
+    init_node(a, 10, &b);
+    init_node(b, 15, &c);
+    init_node(c, 20, nullptr);
 
-    head->next = createNode(4);
-    head->next->next=createNode(6);
-    head->next->next->next= createNode(7);
+    Node* temp = &a;
 
-
-    int circular = isCircular(head);
-
-    cout << "The node system is " << (circular == 1 ? "Circular" : "Non-Circular") << endl;
-
-
-    // Making system circular
-    head->next->next->next->next = head;
-
-    int circularNew = isCircular(head);
-
-    cout << "After the modification, system is:  " << (circularNew == 1 ? "Circular" : "Non-Circular") << endl;
-
-    free(head);
+    while(temp != nullptr) {
+        cout << "Data: " << temp->data << endl;
+        temp = (temp->next);
+    }
 
     return 0;
 }
