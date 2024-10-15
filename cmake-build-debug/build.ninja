@@ -55,6 +55,18 @@ build CMakeFiles/BLG223E.dir/main.cpp.o: CXX_COMPILER__BLG223E_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/BLG223E.dir
   OBJECT_FILE_DIR = CMakeFiles/BLG223E.dir
 
+build CMakeFiles/BLG223E.dir/src/Node.cpp.o: CXX_COMPILER__BLG223E_unscanned_Debug /Users/yunusmerve/Documents/Yunus/itu/BLG223E/src/Node.cpp || cmake_object_order_depends_target_BLG223E
+  DEP_FILE = CMakeFiles/BLG223E.dir/src/Node.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/BLG223E.dir
+  OBJECT_FILE_DIR = CMakeFiles/BLG223E.dir/src
+
+build CMakeFiles/BLG223E.dir/src/LinkedList.cpp.o: CXX_COMPILER__BLG223E_unscanned_Debug /Users/yunusmerve/Documents/Yunus/itu/BLG223E/src/LinkedList.cpp || cmake_object_order_depends_target_BLG223E
+  DEP_FILE = CMakeFiles/BLG223E.dir/src/LinkedList.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/BLG223E.dir
+  OBJECT_FILE_DIR = CMakeFiles/BLG223E.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target BLG223E
@@ -63,7 +75,7 @@ build CMakeFiles/BLG223E.dir/main.cpp.o: CXX_COMPILER__BLG223E_unscanned_Debug /
 #############################################
 # Link the executable BLG223E
 
-build BLG223E: CXX_EXECUTABLE_LINKER__BLG223E_Debug CMakeFiles/BLG223E.dir/main.cpp.o
+build BLG223E: CXX_EXECUTABLE_LINKER__BLG223E_Debug CMakeFiles/BLG223E.dir/main.cpp.o CMakeFiles/BLG223E.dir/src/Node.cpp.o CMakeFiles/BLG223E.dir/src/LinkedList.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/BLG223E.dir
   POST_BUILD = :
